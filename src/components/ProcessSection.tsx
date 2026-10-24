@@ -79,7 +79,7 @@ export default function ProcessSection() {
                 <div>
                   {/* Top: Step Number & Duration Tag */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-extrabold text-2xl text-[#161C2D] tracking-tight group-hover:text-[#E8501F] transition-colors">
+                    <span className="font-extrabold text-2xl text-[#161C2D] tracking-tight group-hover:text-[#0070F3] transition-colors">
                       {step.step}
                     </span>
                     <span className="text-[11px] font-bold text-[#8490A5] bg-[#F3F1EC] px-2.5 py-1 rounded-full uppercase tracking-wider">
@@ -108,7 +108,7 @@ export default function ProcessSection() {
                   </span>
                   {step.deliverables.map((item) => (
                     <div key={item} className="flex items-center gap-2 text-xs font-medium text-[#161C2D]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E8501F]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0070F3]" />
                       <span>{item}</span>
                     </div>
                   ))}

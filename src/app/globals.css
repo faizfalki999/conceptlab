@@ -14,10 +14,10 @@
   --color-navy-border: rgba(255, 255, 255, 0.12);
   --color-navy-text-muted: #A0ABBA;
 
-  --color-orange-primary: #E8501F;
-  --color-orange-hover: #D04314;
-  --color-orange-light: #FCEEE9;
-  --color-orange-glow: rgba(232, 80, 31, 0.25);
+  --color-accent-primary: #0070F3;
+  --color-accent-hover: #005FD1;
+  --color-accent-light: #E6F0FE;
+  --color-accent-glow: rgba(0,112,243, 0.25);
 
   --color-text-main: #161C2D;
   --color-text-secondary: #535E73;
@@ -31,7 +31,7 @@
   forced-color-adjust: none;
   --bg-color: #F3F1EC;
   --navy-color: #1E2745;
-  --orange-color: #E8501F;
+  --accent-color: #0070F3;
 }
 
 html {
@@ -58,7 +58,7 @@ body {
 }
 
 ::selection {
-  background-color: #E8501F;
+  background-color: #0070F3;
   color: #FFFFFF;
 }
 

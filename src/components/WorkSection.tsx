@@ -116,13 +116,13 @@ export default function WorkSection() {
                   onClick={() => setActiveTab(idx)}
                   className={`w-full text-left px-5 py-4 rounded-xl text-base font-bold transition-all flex items-center justify-between ${
                     activeTab === idx
-                      ? "bg-white text-[#161C2D] shadow-sm border-l-4 border-l-[#E8501F] border border-[#E5E2DC]"
+                      ? "bg-white text-[#161C2D] shadow-sm border-l-4 border-l-[#0070F3] border border-[#E5E2DC]"
                       : "text-[#535E73] hover:text-[#161C2D] hover:bg-white/50"
                   }`}
                 >
                   <span>{study.title}</span>
                   {activeTab === idx && (
-                    <ArrowUpRight className="w-4 h-4 text-[#E8501F]" />
+                    <ArrowUpRight className="w-4 h-4 text-[#0070F3]" />
                   )}
                 </button>
               ))}
@@ -201,7 +201,7 @@ export default function WorkSection() {
                   <div className="p-6 rounded-2xl bg-[#1E2745] text-white flex flex-col justify-between shadow-md">
                     <div>
                       <div className="flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider mb-3">
-                        <CheckCircle2 className="w-4 h-4 text-[#E8501F]" />
+                        <CheckCircle2 className="w-4 h-4 text-[#0070F3]" />
                         <span>The Solution</span>
                       </div>
                       <p className="text-sm text-[#A0ABBA] leading-relaxed">

@@ -55,7 +55,7 @@ export default function Navbar() {
             {/* Logo with official CL icon and typography */}
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8501F] rounded-lg group"
+              className="inline-flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0070F3] rounded-lg group"
               aria-label="Concept Lab Solutions Home"
             >
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black overflow-hidden flex items-center justify-center shadow-sm shrink-0 border border-white/20 group-hover:scale-105 transition-transform">
@@ -85,7 +85,7 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-[12px] font-bold tracking-[0.14em] text-[#161C2D] hover:text-[#E8501F] transition-colors duration-150 uppercase"
+                  className="text-[12px] font-bold tracking-[0.14em] text-[#161C2D] hover:text-[#0070F3] transition-colors duration-150 uppercase"
                 >
                   {link.name}
                 </a>
@@ -98,9 +98,9 @@ export default function Navbar() {
             {/* News Tag Pill (shot_01: NEWS ... >) */}
             <a
               href="#services"
-              className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCEEE9] text-[#161C2D] text-[11px] font-semibold tracking-wide hover:bg-[#fae4dc] transition-colors"
+              className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F0FE] text-[#161C2D] text-[11px] font-semibold tracking-wide hover:bg-[#D6E6FD] transition-colors"
             >
-              <span className="font-extrabold text-[#E8501F] uppercase text-[10px] tracking-wider">
+              <span className="font-extrabold text-[#0070F3] uppercase text-[10px] tracking-wider">
                 NEWS
               </span>
               <span className="text-[#161C2D] font-medium text-[11px]">
@@ -129,7 +129,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-full text-[#161C2D] hover:bg-black/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8501F] min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="p-2.5 rounded-full text-[#161C2D] hover:bg-black/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0070F3] min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -182,7 +182,7 @@ export default function Navbar() {
                   <a
                     href="#contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full py-3.5 rounded-lg bg-[#E8501F] text-white font-bold text-xs uppercase tracking-wider shadow-md"
+                    className="flex items-center justify-center w-full py-3.5 rounded-lg bg-[#0070F3] text-white font-bold text-xs uppercase tracking-wider shadow-md"
                   >
                     BOOK A CALL
                   </a>

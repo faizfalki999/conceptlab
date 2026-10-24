@@ -174,8 +174,8 @@ export default function HeroOrbitTrack({
           }px)`,
         }}
       >
-        <div className="flex items-center gap-1.5 text-[10px] font-extrabold tracking-[0.12em] text-[#E8501F] uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E8501F]" />
+        <div className="flex items-center gap-1.5 text-[10px] font-extrabold tracking-[0.12em] text-[#0070F3] uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#0070F3]" />
           Service {index + 1}/{SERVICES.length}
         </div>
         <div className="mt-1 text-[13px] font-bold text-[#161C2D] leading-tight">

@@ -68,7 +68,7 @@ export default function ContactSection() {
       className="bg-[#1E2745] text-white py-24 sm:py-32 relative overflow-hidden"
     >
       {/* Background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[400px] bg-[#E8501F]/10 blur-[140px] rounded-full pointer-events-none overflow-hidden" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[400px] bg-[#0070F3]/10 blur-[140px] rounded-full pointer-events-none overflow-hidden" />
 
       <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         
@@ -82,7 +82,7 @@ export default function ContactSection() {
               {/* Top ambient badge */}
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-white text-[11px] font-bold uppercase tracking-wider border border-white/10">
-                  <Clock className="w-3.5 h-3.5 text-[#E8501F]" />
+                  <Clock className="w-3.5 h-3.5 text-[#0070F3]" />
                   <span>24-Hour Reply Guarantee</span>
                 </div>
 
@@ -99,7 +99,7 @@ export default function ContactSection() {
               {/* Center graphic preview (conceptlab showcase) */}
               <div className="my-6 p-4 rounded-xl bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm">
                 <div className="flex items-center gap-2 mb-2 text-xs font-bold text-white">
-                  <Sparkles className="w-4 h-4 text-[#E8501F]" />
+                  <Sparkles className="w-4 h-4 text-[#0070F3]" />
                   <span>What to expect on your call:</span>
                 </div>
                 <ul className="text-xs text-[#A0ABBA] space-y-1.5">
@@ -144,7 +144,7 @@ export default function ContactSection() {
             {/* RIGHT: Contact Form (shot_05 fields & submit button) */}
             <div className="lg:col-span-7 flex flex-col justify-center">
               <div className="mb-8">
-                <div className="inline-block px-3 py-1 rounded-[4px] bg-[#E8501F]/20 text-[#FF8C66] text-[10px] font-extrabold uppercase tracking-widest border border-[#E8501F]/30 mb-3">
+                <div className="inline-block px-3 py-1 rounded-[4px] bg-[#0070F3]/20 text-[#FF8C66] text-[10px] font-extrabold uppercase tracking-widest border border-[#0070F3]/30 mb-3">
                   BOOK A CALL
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -190,7 +190,7 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. John Doe"
-                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#E8501F] transition-colors"
+                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#0070F3] transition-colors"
                       />
                     </div>
 
@@ -205,7 +205,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="john@company.com"
-                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#E8501F] transition-colors"
+                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#0070F3] transition-colors"
                       />
                     </div>
                   </div>
@@ -221,7 +221,7 @@ export default function ContactSection() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="e.g. Acme Corp"
-                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#E8501F] transition-colors"
+                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#0070F3] transition-colors"
                       />
                     </div>
 
@@ -233,7 +233,7 @@ export default function ContactSection() {
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#E8501F] transition-colors"
+                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#0070F3] transition-colors"
                       >
                         {SERVICES_OPTIONS.map((srv) => (
                           <option key={srv} value={srv} className="bg-[#141B30] text-white">
@@ -254,7 +254,7 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Briefly describe what you are looking to build or automate..."
-                      className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#E8501F] transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#0070F3] transition-colors resize-none"
                     />
                   </div>
 
@@ -265,12 +265,12 @@ export default function ContactSection() {
                     </p>
                   )}
 
-                  {/* Submit Button (shot_05 orange rectangular button) */}
+                  {/* Submit Button (shot_05 blue rectangular button) */}
                   <div className="pt-2">
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="w-full sm:w-auto px-8 py-3.5 rounded-[5px] bg-[#E8501F] hover:bg-[#D44213] text-white font-bold text-xs uppercase tracking-[0.14em] shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full sm:w-auto px-8 py-3.5 rounded-[5px] bg-[#0070F3] hover:bg-[#005FD1] text-white font-bold text-xs uppercase tracking-[0.14em] shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {status === "loading" ? (
                         <span>Sending...</span>

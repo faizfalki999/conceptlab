@@ -136,7 +136,7 @@ export default function TechStripAndWorkflow() {
       className="bg-[#1E2745] text-white pt-16 sm:pt-20 pb-24 sm:pb-32 relative overflow-hidden"
     >
       {/* Subtle ambient lighting */}
-      <div className="absolute top-0 right-0 w-[300px] sm:w-[600px] h-[350px] bg-[#E8501F]/10 blur-[130px] rounded-full pointer-events-none overflow-hidden" />
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[600px] h-[350px] bg-[#0070F3]/10 blur-[130px] rounded-full pointer-events-none overflow-hidden" />
       <div className="absolute bottom-0 left-0 w-[300px] sm:w-[500px] h-[300px] bg-[#253157]/40 blur-[120px] rounded-full pointer-events-none overflow-hidden" />
 
       <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
@@ -188,14 +188,14 @@ export default function TechStripAndWorkflow() {
                   className="group py-4 sm:py-5 flex items-start justify-between gap-4 cursor-pointer hover:pl-2 transition-all duration-200"
                 >
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#E8501F] transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#0070F3] transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-[#A0ABBA] mt-1 leading-relaxed max-w-md">
                       {step.desc}
                     </p>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-white/40 group-hover:text-[#E8501F] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                  <ArrowRight className="w-5 h-5 text-white/40 group-hover:text-[#0070F3] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                 </div>
               ))}
             </div>
@@ -244,15 +244,15 @@ export default function TechStripAndWorkflow() {
 
                   <defs>
                     <linearGradient id="flowBeam" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#E8501F" stopOpacity="0.9" />
-                      <stop offset="100%" stopColor="#E8501F" stopOpacity="0.2" />
+                      <stop offset="0%" stopColor="#0070F3" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="#0070F3" stopOpacity="0.2" />
                     </linearGradient>
                   </defs>
                 </svg>
 
                 {/* Central glowing orb (shot_02 glowing dot) */}
                 <div className="absolute top-[68px] left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#E8501F] to-[#FF8C66] shadow-[0_0_30px_rgba(232,80,31,0.8)] flex items-center justify-center animate-pulse">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0070F3] to-[#FF8C66] shadow-[0_0_30px_rgba(0,112,243,0.8)] flex items-center justify-center animate-pulse">
                     <Sparkles className="w-6 h-6 text-white" />
                   </div>
                 </div>

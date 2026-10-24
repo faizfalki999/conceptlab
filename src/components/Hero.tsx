@@ -74,7 +74,7 @@ export default function Hero() {
 
         <div className="max-w-xl">
           {/* Tag (FROM IDEA TO LAUNCH) */}
-          <div className="inline-block px-3 py-1.5 rounded-[4px] bg-[#FCEEE9] text-[#E8501F] text-[11px] font-extrabold uppercase tracking-widest mb-6 sm:mb-8">
+          <div className="inline-block px-3 py-1.5 rounded-[4px] bg-[#E6F0FE] text-[#0070F3] text-[11px] font-extrabold uppercase tracking-widest mb-6 sm:mb-8">
             FROM IDEA TO LAUNCH
           </div>
 
@@ -96,7 +96,7 @@ export default function Hero() {
           <div className="mt-7 sm:mt-9">
             <a
               href="#contact"
-              className="inline-flex w-full sm:w-auto items-center justify-center px-10 py-4 rounded-[5px] bg-[#E8501F] hover:bg-[#D44213] text-white font-bold text-[13px] tracking-[0.18em] uppercase shadow-[0_4px_16px_rgba(232,80,31,0.28)] hover:shadow-[0_6px_22px_rgba(232,80,31,0.38)] active:scale-[0.99] transition-all"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-10 py-4 rounded-[5px] bg-[#0070F3] hover:bg-[#005FD1] text-white font-bold text-[13px] tracking-[0.18em] uppercase shadow-[0_4px_16px_rgba(0,112,243,0.28)] hover:shadow-[0_6px_22px_rgba(0,112,243,0.38)] active:scale-[0.99] transition-all"
             >
               BOOK A CALL
             </a>

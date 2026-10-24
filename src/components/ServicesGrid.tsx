@@ -121,14 +121,14 @@ export default function ServicesGrid() {
                 <div>
                   {/* Top Accent Dash (from shot_14) + Icon */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-8 h-1 rounded-full bg-[#E5E2DC] group-hover:bg-[#E8501F] transition-colors duration-200" />
+                    <div className="w-8 h-1 rounded-full bg-[#E5E2DC] group-hover:bg-[#0070F3] transition-colors duration-200" />
                     <div className="w-9 h-9 rounded-xl bg-[#F3F1EC] group-hover:bg-[#1E2745] text-[#1E2745] group-hover:text-white flex items-center justify-center transition-colors duration-200">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-bold text-lg sm:text-xl text-[#161C2D] group-hover:text-[#E8501F] transition-colors duration-200">
+                  <h3 className="font-bold text-lg sm:text-xl text-[#161C2D] group-hover:text-[#0070F3] transition-colors duration-200">
                     {service.title}
                   </h3>
 
@@ -145,7 +145,7 @@ export default function ServicesGrid() {
                   </span>
                   <a
                     href="#contact"
-                    className="p-1.5 rounded-full text-[#8490A5] group-hover:text-[#E8501F] group-hover:bg-[#FCEEE9] transition-all"
+                    className="p-1.5 rounded-full text-[#8490A5] group-hover:text-[#0070F3] group-hover:bg-[#E6F0FE] transition-all"
                     aria-label={`Get started with ${service.title}`}
                   >
                     <ArrowUpRight className="w-4 h-4" />

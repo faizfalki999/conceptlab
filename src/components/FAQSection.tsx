@@ -117,7 +117,7 @@ export default function FAQSection() {
                   }}
                   className={`block w-full text-left py-2.5 text-base font-bold transition-colors ${
                     activeCategory === cat
-                      ? "text-[#161C2D] -ml-[18px] pl-4 border-l-2 border-l-[#E8501F]"
+                      ? "text-[#161C2D] -ml-[18px] pl-4 border-l-2 border-l-[#0070F3]"
                       : "text-[#8490A5] hover:text-[#161C2D]"
                   }`}
                 >
@@ -137,7 +137,7 @@ export default function FAQSection() {
               </p>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#F3F1EC] hover:bg-[#E8501F] text-[#161C2D] hover:text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#F3F1EC] hover:bg-[#0070F3] text-[#161C2D] hover:text-white text-xs font-bold uppercase tracking-wider transition-colors"
               >
                 <span>Contact Support</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
