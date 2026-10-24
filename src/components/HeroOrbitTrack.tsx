@@ -1,301 +1,231 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { SERVICES } from "@/data/services";
 
-// Blur puff configuration for organic motion-blur trail
-const TRAIL_PUFFS = [
-  { offsetDeg: 2, radius: 41, opacity: 0.82, blur: 8 },
-  { offsetDeg: 5, radius: 40, opacity: 0.70, blur: 11 },
-  { offsetDeg: 9, radius: 38, opacity: 0.55, blur: 14 },
-  { offsetDeg: 14, radius: 36, opacity: 0.40, blur: 17 },
-  { offsetDeg: 20, radius: 34, opacity: 0.26, blur: 21 },
-  { offsetDeg: 27, radius: 31, opacity: 0.14, blur: 25 },
-  { offsetDeg: 35, radius: 28, opacity: 0.05, blur: 30 },
-];
+// Blur puffs trailing behind the orb, as angle offsets (degrees) up the arc
+const TRAIL_PUFFS = Array.from({ length: 16 }, (_, i) => {
+  const k = i / 15;
+  return {
+    offsetDeg: 1 + i * 2.2,
+    scale: 0.95 - k * 0.4,
+    opacity: 0.55 * Math.pow(1 - k, 1.6),
+  };
+});
 
-export default function HeroOrbitTrack() {
-  const requestRef = useRef<number | null>(null);
-  const progressRef = useRef<number>(0);
+// Timeline for each service (ms): slide in, hold at the anchor, slide out
+const ENTER_MS = 1500;
+const HOLD_MS = 3000;
+const EXIT_MS = 1300;
+const CYCLE_MS = ENTER_MS + HOLD_MS + EXIT_MS;
 
-  // SVG coordinate dimensions: viewBox 0 0 1200 880
-  const cx = 1180;
-  const cy = 480;
-  const R = 550;
-  const trackWidth = 140;
+interface HeroOrbitTrackProps {
+  /** Container height in px */
+  height: number;
+  /** X of the arc's leftmost point (track centre line), from the container's left edge */
+  left: number;
+  /** Y of the circle centre */
+  cy: number;
+  /** Radius of the track centre line */
+  radius: number;
+  /** Track thickness */
+  track: number;
+  /** Orb diameter */
+  orb: number;
+  /** Angle (deg, 0 = leftmost point, positive = up) where the orb pauses */
+  anchorDeg: number;
+  /** Which side of the orb the service card sits on */
+  cardSide: "left" | "right";
+  className?: string;
+}
 
-  // Arc boundaries in degrees:
-  // Top entrance: +80° (sweeps in above the stats from top right)
-  // Leftmost apex: 0° (X = 630px, Y = 480px, to the left of the stats)
-  // Bottom exit: -70° (exits below the screen)
-  const arcTopDeg = 80;
-  const arcBottomDeg = -70;
-  const totalArcSpan = arcTopDeg - arcBottomDeg; // 150 degrees
+export default function HeroOrbitTrack({
+  height,
+  left,
+  cy,
+  radius: R,
+  track,
+  orb,
+  anchorDeg,
+  cardSide,
+  className = "",
+}: HeroOrbitTrackProps) {
+  const cx = left + R;
+  const filterId = `orbTrailBlur-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const orbRef = useRef<HTMLDivElement>(null);
+  const trailRef = useRef<SVGGElement>(null);
+  const [index, setIndex] = useState(0);
+  const [holding, setHolding] = useState(true);
 
-  const [frameData, setFrameData] = useState<{
-    discs: Array<{
-      id: string;
-      type: "cl" | "soundwave";
-      head: { x: number; y: number };
-      puffs: Array<{ x: number; y: number; radius: number; opacity: number; blur: number }>;
-      opacity: number;
-    }>;
-  }>({
-    discs: [
-      {
-        id: "disc-cl",
-        type: "cl",
-        head: { x: 894, y: 72 },
-        puffs: TRAIL_PUFFS.map((p) => ({
-          x: 1180 - 550 * Math.cos(((62 + p.offsetDeg) * Math.PI) / 180),
-          y: 480 - 550 * Math.sin(((62 + p.offsetDeg) * Math.PI) / 180),
-          radius: p.radius,
-          opacity: p.opacity,
-          blur: p.blur,
-        })),
-        opacity: 1,
-      },
-      {
-        id: "disc-soundwave",
-        type: "soundwave",
-        head: { x: 815, y: 750 },
-        puffs: TRAIL_PUFFS.map((p) => ({
-          x: 1180 - 550 * Math.cos(((-13 + p.offsetDeg) * Math.PI) / 180),
-          y: 480 - 550 * Math.sin(((-13 + p.offsetDeg) * Math.PI) / 180),
-          radius: p.radius,
-          opacity: p.opacity,
-          blur: p.blur,
-        })),
-        opacity: 1,
-      },
-    ],
-  });
+  const getPos = (deg: number) => {
+    const rad = (deg * Math.PI) / 180;
+    return { x: cx - R * Math.cos(rad), y: cy - R * Math.sin(rad) };
+  };
+
+  // Angles where the orb is fully outside the container (top and bottom)
+  const topDeg = (Math.asin(Math.min(1, (cy + orb) / R)) * 180) / Math.PI;
+  const bottomDeg =
+    (-Math.asin(Math.min(1, (height - cy + orb) / R)) * 180) / Math.PI;
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
+    const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const getPos = (deg: number) => {
-      const rad = (deg * Math.PI) / 180;
-      return {
-        x: cx - R * Math.cos(rad),
-        y: cy - R * Math.sin(rad), // Y increases downwards as deg decreases
-      };
+    const place = (deg: number) => {
+      const { x, y } = getPos(deg);
+      if (orbRef.current) {
+        orbRef.current.style.transform = `translate(${x - orb / 2}px, ${y - orb / 2}px)`;
+      }
+      trailRef.current?.setAttribute("transform", `rotate(${deg} ${cx} ${cy})`);
     };
 
-    let lastTime = performance.now();
+    if (reduced) {
+      place(anchorDeg);
+      const id = window.setInterval(
+        () => setIndex((i) => (i + 1) % SERVICES.length),
+        HOLD_MS
+      );
+      return () => window.clearInterval(id);
+    }
 
-    const animate = (currentTime: number) => {
-      const delta = (currentTime - lastTime) / 1000;
-      lastTime = currentTime;
+    // Start mid-hold so the first frame matches the static layout
+    const start = performance.now() - ENTER_MS - 400;
+    let lastCycle = 0;
+    let lastHolding = true;
+    let raf = 0;
 
-      if (!prefersReducedMotion) {
-        // Discs travel smoothly downwards (1 full cycle ~ 14s)
-        progressRef.current = (progressRef.current + delta * 0.07) % 1;
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const cycle = Math.floor(elapsed / CYCLE_MS);
+      const t = elapsed % CYCLE_MS;
+
+      let deg: number;
+      let isHolding = false;
+      if (t < ENTER_MS) {
+        const k = 1 - Math.pow(1 - t / ENTER_MS, 3); // ease-out
+        deg = topDeg + (anchorDeg - topDeg) * k;
+      } else if (t < ENTER_MS + HOLD_MS) {
+        deg = anchorDeg;
+        isHolding = true;
+      } else {
+        const k = Math.pow((t - ENTER_MS - HOLD_MS) / EXIT_MS, 3); // ease-in
+        deg = anchorDeg + (bottomDeg - anchorDeg) * k;
       }
 
-      const p = progressRef.current;
+      place(deg);
 
-      // 2 Discs spaced across the track
-      const discTypes: Array<"cl" | "soundwave"> = ["cl", "soundwave"];
-
-      const discs = discTypes.map((type, index) => {
-        // Spaced by 0.5 (half-cycle apart)
-        const discP = (p + index * 0.5) % 1;
-        const discDeg = arcTopDeg - discP * totalArcSpan;
-
-        const head = getPos(discDeg);
-
-        // Calculate opacity fade at the extreme top and bottom ends
-        let opacity = 1;
-        if (discDeg > 65) {
-          opacity = Math.max(0, (arcTopDeg - discDeg) / 15);
-        } else if (discDeg < -55) {
-          opacity = Math.max(0, (discDeg - arcBottomDeg) / 15);
-        }
-
-        // Generate the organic trailing blur puffs extending UPWARDS behind the disc
-        const puffs = TRAIL_PUFFS.map((puff) => {
-          const puffDeg = discDeg + puff.offsetDeg;
-          const pos = getPos(puffDeg);
-          return {
-            x: pos.x,
-            y: pos.y,
-            radius: puff.radius,
-            opacity: puff.opacity * opacity,
-            blur: puff.blur,
-          };
-        });
-
-        return {
-          id: `disc-${type}`,
-          type,
-          head,
-          puffs,
-          opacity,
-        };
-      });
-
-      setFrameData({ discs });
-      requestRef.current = requestAnimationFrame(animate);
-    };
-
-    requestRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (requestRef.current) {
-        cancelAnimationFrame(requestRef.current);
+      if (cycle !== lastCycle) {
+        lastCycle = cycle;
+        setIndex(cycle % SERVICES.length);
       }
+      if (isHolding !== lastHolding) {
+        lastHolding = isHolding;
+        setHolding(isHolding);
+      }
+      raf = requestAnimationFrame(tick);
     };
-  }, []);
 
-  // Compute wide beige stationary track path
-  const radTop = (arcTopDeg * Math.PI) / 180;
-  const radBottom = (arcBottomDeg * Math.PI) / 180;
-  const trackStartX = cx - R * Math.cos(radTop);
-  const trackStartY = cy - R * Math.sin(radTop);
-  const trackEndX = cx - R * Math.cos(radBottom);
-  const trackEndY = cy - R * Math.sin(radBottom);
-  const trackPathD = `M ${trackStartX.toFixed(1)} ${trackStartY.toFixed(1)} A ${R} ${R} 0 0 0 ${trackEndX.toFixed(1)} ${trackEndY.toFixed(1)}`;
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cx, cy, R, orb, anchorDeg, topDeg, bottomDeg]);
+
+  const service = SERVICES[index];
+  const Icon = service.icon;
+  const anchor = getPos(anchorDeg);
+  const initial = getPos(anchorDeg);
 
   return (
     <div
-      className="hidden lg:block absolute inset-0 pointer-events-none overflow-hidden select-none"
-      aria-hidden="true"
+      className={`relative overflow-hidden select-none ${className}`}
+      style={{ height }}
     >
       <svg
-        className="absolute right-0 top-0 w-[900px] lg:w-[1150px] xl:w-[1300px] h-full pointer-events-none"
-        viewBox="0 0 1200 880"
+        className="absolute inset-0 w-full h-full pointer-events-none"
         fill="none"
-        preserveAspectRatio="xMaxYMid meet"
+        aria-hidden="true"
       >
         <defs>
-          {/* Strict circular clip for CL logo to prevent any rectangular boundary */}
-          <clipPath id="clCircleMask">
-            <circle cx="0" cy="0" r="41.5" />
-          </clipPath>
+          <filter id={filterId} x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation={orb * 0.2} />
+          </filter>
         </defs>
 
-        {/* 1. SOLID WIDE BEIGE/GREY CIRCULAR TRACK (shot_01: smooth 140px ribbon) */}
-        <path
-          d={trackPathD}
-          stroke="#E5E2DC"
-          strokeWidth={trackWidth}
-          strokeLinecap="butt"
-          fill="none"
-        />
-
-        {/* 2. DIRECTIONAL SMOKE / SPEED BLUR TRAILS BEHIND EACH DISC */}
-        {frameData.discs.map((disc) => (
-          <g key={`trail-group-${disc.id}`}>
-            {disc.puffs.map((puff, i) => (
-              <circle
-                key={`puff-${disc.id}-${i}`}
-                cx={puff.x}
-                cy={puff.y}
-                r={puff.radius}
-                fill="#1E2745"
-                opacity={puff.opacity}
-                style={{ filter: `blur(${puff.blur}px)` }}
-              />
-            ))}
-          </g>
-        ))}
-
-        {/* 3. THE ORBITING DISCS (Sits right on the leading edge of the trail) */}
-        {frameData.discs.map((disc) => (
-          <g
-            key={`disc-elem-${disc.id}`}
-            transform={`translate(${disc.head.x}, ${disc.head.y})`}
-            opacity={disc.opacity}
-          >
-            {/* DISC 1: Official Concept Lab 3D Blue CL Logo Disc */}
-            {disc.type === "cl" && (
-              <>
-                <circle cx="0" cy="0" r="42" fill="#0B1120" />
-                <g clipPath="url(#clCircleMask)">
-                  <image
-                    href="/brand/cl-icon.jpg"
-                    x="-42"
-                    y="-42"
-                    width="84"
-                    height="84"
-                    preserveAspectRatio="xMidYMid slice"
-                  />
-                </g>
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="42"
-                  fill="none"
-                  stroke="#1E2745"
-                  strokeWidth="2.5"
-                />
-              </>
-            )}
-
-            {/* DISC 2: AI Voice Soundwave Bars (from Video & shot_01) */}
-            {disc.type === "soundwave" && (
-              <>
-                <circle cx="0" cy="0" r="42" fill="#1E2745" />
-                <line
-                  x1="-16"
-                  y1="-8"
-                  x2="-16"
-                  y2="8"
-                  stroke="#FFFFFF"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-                <line
-                  x1="-8"
-                  y1="-14"
-                  x2="-8"
-                  y2="14"
-                  stroke="#FFFFFF"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-                <line
-                  x1="0"
-                  y1="-8"
-                  x2="0"
-                  y2="8"
-                  stroke="#FFFFFF"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-                <line
-                  x1="8"
-                  y1="-16"
-                  x2="8"
-                  y2="16"
-                  stroke="#FFFFFF"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-                <line
-                  x1="16"
-                  y1="-6"
-                  x2="16"
-                  y2="6"
-                  stroke="#FFFFFF"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="42"
-                  fill="none"
-                  stroke="#2D3A66"
-                  strokeWidth="2"
-                />
-              </>
-            )}
-          </g>
-        ))}
+        {/* Wide stationary track */}
+        <circle cx={cx} cy={cy} r={R} stroke="#E8E5DF" strokeWidth={track} />
       </svg>
+
+      {/* Service card, pinned next to the orb's resting point */}
+      <div
+        aria-live="polite"
+        className={`absolute z-10 rounded-[10px] border border-[#E2DED6] bg-[#F7F5F1]/95 shadow-[0_6px_20px_rgba(22,28,45,0.06)] transition-all duration-300 ${
+          holding ? "opacity-100" : "opacity-0"
+        } ${cardSide === "left" ? "pr-10 pl-4" : "pl-10 pr-4"} py-3`}
+        style={{
+          top: anchor.y,
+          left:
+            cardSide === "left"
+              ? anchor.x - orb / 2 + 22
+              : anchor.x + orb / 2 - 22,
+          width: 240,
+          transform: `translate(${cardSide === "left" ? "-100%" : "0"}, -50%) translateY(${
+            holding ? 0 : 6
+          }px)`,
+        }}
+      >
+        <div className="flex items-center gap-1.5 text-[10px] font-extrabold tracking-[0.12em] text-[#E8501F] uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E8501F]" />
+          Service {index + 1}/{SERVICES.length}
+        </div>
+        <div className="mt-1 text-[13px] font-bold text-[#161C2D] leading-tight">
+          {service.name}
+        </div>
+        <div className="mt-0.5 text-[11px] text-[#535E73] leading-snug">
+          {service.description}
+        </div>
+      </div>
+
+      {/* Motion-blur trail (rotated around the circle centre to follow the orb) */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none z-20"
+        fill="none"
+        aria-hidden="true"
+      >
+        <g
+          ref={trailRef}
+          transform={`rotate(${anchorDeg} ${cx} ${cy})`}
+          filter={`url(#${filterId})`}
+        >
+          {TRAIL_PUFFS.map((p) => {
+            const pos = getPos(p.offsetDeg);
+            return (
+              <circle
+                key={p.offsetDeg}
+                cx={pos.x}
+                cy={pos.y}
+                r={(orb / 2) * p.scale}
+                fill="#1E2745"
+                opacity={p.opacity}
+              />
+            );
+          })}
+        </g>
+      </svg>
+
+      {/* The orb */}
+      <div
+        ref={orbRef}
+        aria-hidden="true"
+        className="absolute left-0 top-0 z-30 rounded-full bg-[#1E2745] border-2 border-[#2D3A66] shadow-[0_10px_28px_rgba(30,39,69,0.35)] flex items-center justify-center will-change-transform"
+        style={{
+          width: orb,
+          height: orb,
+          transform: `translate(${initial.x - orb / 2}px, ${initial.y - orb / 2}px)`,
+        }}
+      >
+        <Icon className="text-white" style={{ width: orb * 0.36, height: orb * 0.36 }} strokeWidth={2.2} />
+      </div>
     </div>
   );
 }
