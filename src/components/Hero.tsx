@@ -103,33 +103,29 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* MOBILE / TABLET: arc + orbiting service, then stats */}
-        <div className="lg:hidden mt-10 -mx-6 sm:mx-0 sm:max-w-[440px]">
-          <HeroOrbitTrack
-            className="w-full"
-            height={300}
-            left={52}
-            cy={150}
-            radius={340}
-            track={84}
-            orb={60}
-            anchorDeg={0}
-            cardSide="right"
-          />
-        </div>
-
-        <dl className="lg:hidden mt-8 grid grid-cols-3 gap-4 border-t border-[#E2DED6] pt-6">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="flex flex-col-reverse">
-              <dt className="text-[12px] sm:text-sm text-[#535E73] mt-1 leading-snug">
-                {stat.label}
-              </dt>
-              <dd className="text-[30px] sm:text-[40px] font-extrabold leading-none tracking-tight text-[#161C2D]">
-                {stat.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        {/* MOBILE / TABLET: arc with stats inside the ring, service card below */}
+        <HeroOrbitTrack
+          className="lg:hidden mt-12 sm:max-w-[480px]"
+          height={340}
+          left={36}
+          cy={170}
+          radius={300}
+          track={68}
+          orb={54}
+          anchorDeg={0}
+          cardSide="bottom"
+        >
+          <dl className="absolute left-[118px] sm:left-[132px] top-1/2 -translate-y-1/2 z-10 flex flex-col gap-5">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="flex flex-col-reverse">
+                <dt className="text-[13px] text-[#535E73] mt-1">{stat.label}</dt>
+                <dd className="text-[34px] sm:text-[40px] font-extrabold leading-none tracking-tight text-[#161C2D]">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </HeroOrbitTrack>
 
         {/* AI team card stack */}
         <div className="mt-12 lg:mt-14">
