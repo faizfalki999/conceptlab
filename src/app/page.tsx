@@ -1,8 +1,9 @@
 import Hero from "@/components/Hero";
 import TechStripAndWorkflow from "@/components/TechStripAndWorkflow";
 import ServicesGrid from "@/components/ServicesGrid";
+import ModernizationSection from "@/components/ModernizationSection";
 import ProcessSection from "@/components/ProcessSection";
-import WorkSection from "@/components/WorkSection";
+import AboutSection from "@/components/AboutSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -10,28 +11,31 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="flex-1 flex flex-col">
-      {/* 1. Navbar + Hero Section (shot_01 reference) */}
+      {/* 1. Navbar + Hero Section */}
       <Hero />
 
-      {/* 2. Tech Strip + Dark 'How It Works' Section with Tabs (shot_02 reference) */}
+      {/* 2. Tech Strip + Dark 'How We Work' Section with Tabs */}
       <TechStripAndWorkflow />
 
-      {/* 3. Services Grid: 9 Service Cards (shot_14 reference) */}
+      {/* 3. Services Grid: 9 Service Cards */}
       <ServicesGrid />
 
-      {/* 4. Process Section: 4-Step Timeline (Discover, Design, Build, Launch) */}
+      {/* 4. Modernization: Typical Engagements with Challenge/Approach */}
+      <ModernizationSection />
+
+      {/* 5. Our Approach: 4-Step Timeline (Assess, Plan, Build, Support) */}
       <ProcessSection />
 
-      {/* 5. Work & Results: Interactive Case Study Tabs with Problem/Solution (shot_10 reference) */}
-      <WorkSection />
+      {/* 6. About: Positioning + Three Service Streams */}
+      <AboutSection />
 
-      {/* 6. FAQ Section: Categories + Accordion + Schema (shot_06 reference) */}
+      {/* 7. FAQ Section: Categories + Accordion + Schema */}
       <FAQSection />
 
-      {/* 7. Contact Section: Navy Card + 24hr Promise + API Form (shot_05 reference) */}
+      {/* 8. Contact Section: Navy Card + 24hr Promise + API Form */}
       <ContactSection />
 
-      {/* 8. Footer: Partner Strip + 4 Link Cards + Oversized Brand Text (shot_07 reference) */}
+      {/* 9. Footer: Tech Strip + 4 Link Cards + Oversized Brand Text */}
       <Footer />
     </main>
   );

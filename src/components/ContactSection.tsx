@@ -2,19 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, CheckCircle2, Clock, Sparkles, Send } from "lucide-react";
+import { CheckCircle2, Clock, Sparkles, Send } from "lucide-react";
+import { SERVICES } from "@/data/services";
 
-const SERVICES_OPTIONS = [
-  "Full-Stack Website Development",
-  "E-Commerce Website Development",
-  "SEO & AI Visibility Optimization",
-  "AI Chatbot Development",
-  "AI Call Bots & Voice Agents",
-  "Maintenance & Support Retainer",
-  "SaaS MVP Development",
-  "Custom Shopify Themes & Apps",
-  "Cross-Platform Mobile Apps",
-];
+const SERVICES_OPTIONS = [...SERVICES.map((s) => s.name), "Not sure yet"];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -87,12 +78,12 @@ export default function ContactSection() {
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-                  We reply within 24 hours with an actionable blueprint.
+                  We reply within 24 hours with clear next steps.
                 </h3>
 
                 <p className="text-xs sm:text-sm text-[#A0ABBA] leading-relaxed">
-                  No generic sales reps. You will speak directly with an engineer
-                  who understands system architecture, budget scoping, and timelines.
+                  No sales reps. You speak directly with a senior engineer who
+                  understands legacy systems, integrations, budgets and timelines.
                 </p>
               </div>
 
@@ -105,15 +96,15 @@ export default function ContactSection() {
                 <ul className="text-xs text-[#A0ABBA] space-y-1.5">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Exact sprint timeline &amp; fixed milestone quote</span>
+                    <span>A clear view of your systems, risks &amp; options</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Technical stack &amp; AI architecture breakdown</span>
+                    <span>Recommended approach &amp; realistic timeline</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>No obligation, 100% confidential advisory</span>
+                    <span>No obligation, confidential conversation</span>
                   </li>
                 </ul>
               </div>
@@ -123,7 +114,7 @@ export default function ContactSection() {
                 <div className="w-11 h-11 rounded-full overflow-hidden bg-black shrink-0 border border-white/20">
                   <Image
                     src="/brand/founder.jpg"
-                    alt="Concept Lab Verified Client"
+                    alt="ConceptLab senior engineer"
                     width={44}
                     height={44}
                     className="w-full h-full object-cover"
@@ -131,10 +122,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-white leading-snug">
-                    “Feels like an extension of our core team.”
+                    Talk directly to the engineer doing the work.
                   </p>
                   <p className="text-[11px] text-[#A0ABBA] mt-0.5">
-                    Founders at US SaaS &amp; E-Com Brands
+                    No hand-offs, no account managers
                   </p>
                 </div>
               </div>
@@ -144,15 +135,15 @@ export default function ContactSection() {
             {/* RIGHT: Contact Form (shot_05 fields & submit button) */}
             <div className="lg:col-span-7 flex flex-col justify-center">
               <div className="mb-8">
-                <div className="inline-block px-3 py-1 rounded-[4px] bg-[#0070F3]/20 text-[#FF8C66] text-[10px] font-extrabold uppercase tracking-widest border border-[#0070F3]/30 mb-3">
+                <div className="inline-block px-3 py-1 rounded-[4px] bg-[#0070F3]/20 text-[#66A8FF] text-[10px] font-extrabold uppercase tracking-widest border border-[#0070F3]/30 mb-3">
                   BOOK A CALL
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                  Start Your Project with Concept Lab
+                  Start a Conversation with ConceptLab
                 </h2>
                 <p className="text-sm text-[#A0ABBA] mt-2">
-                  Tell us about your digital product or AI vision. We will follow
-                  up within 24 hours.
+                  Tell us about your project or the system you need to modernize.
+                  We will follow up within 24 hours.
                 </p>
               </div>
 
@@ -247,13 +238,13 @@ export default function ContactSection() {
                   {/* Message */}
                   <div>
                     <label className="block text-[11px] font-bold text-white/90 uppercase tracking-wider mb-1.5">
-                      Project Overview &amp; Goals
+                      Project or System Overview
                     </label>
                     <textarea
                       rows={3}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Briefly describe what you are looking to build or automate..."
+                      placeholder="Briefly describe the system, the challenge, or what you want to build..."
                       className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#0070F3] transition-colors resize-none"
                     />
                   </div>

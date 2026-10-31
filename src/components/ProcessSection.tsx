@@ -1,48 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Compass, Palette, Code2, Rocket, ArrowRight } from "lucide-react";
+import { Search, Map as MapIcon, Code2, LifeBuoy } from "lucide-react";
 
 const STEPS = [
   {
     step: "01",
-    title: "Discover",
-    duration: "Week 1",
-    desc: "We analyze your business model, audit existing codebases, and map out a bulletproof technical specification with zero guesswork.",
-    icon: Compass,
-    deliverables: ["Technical Architecture Blueprint", "Scope & Milestone Schedule", "Tech Stack Selection"],
+    title: "Assess",
+    duration: "1–2 Weeks",
+    desc: "We review your existing systems, code, data and integrations to understand what works, what is fragile and what the business actually needs.",
+    icon: Search,
+    deliverables: ["System & Code Assessment", "Risk & Dependency Map", "Business Priorities Agreed"],
   },
   {
     step: "02",
-    title: "Design",
-    duration: "Week 1–2",
-    desc: "Conversion-focused, pixel-perfect UX/UI tailored for high engagement. We design interactive Figma prototypes before writing code.",
-    icon: Palette,
-    deliverables: ["Interactive Component System", "Responsive Mobile Flows", "Brand Styling & Tokens"],
+    title: "Plan",
+    duration: "1 Week",
+    desc: "A practical roadmap: what to modernize, rebuild, integrate or automate first, in which order, and how to do it without disrupting operations.",
+    icon: MapIcon,
+    deliverables: ["Modernization Roadmap", "Architecture Proposal", "Milestones & Estimates"],
   },
   {
     step: "03",
-    title: "Build",
-    duration: "Week 2–3",
-    desc: "Rapid full-stack engineering using Next.js 16, clean TypeScript, and serverless infrastructure. Daily progress updates on private staging.",
+    title: "Build & Modernize",
+    duration: "Iterative",
+    desc: "Delivery in small, tested increments. Old and new systems run side by side where needed, with regular demos and no big-bang cutovers.",
     icon: Code2,
-    deliverables: ["Clean Modular Codebase", "AI Voice & Chat Integrations", "Database & Auth Setup"],
+    deliverables: ["Tested, Documented Code", "Integrations & Data Migration", "Staged Releases"],
   },
   {
     step: "04",
-    title: "Launch & Support",
-    duration: "Week 4+",
-    desc: "Rigorous performance audit, Lighthouse 95+ verification, seamless DNS cutover, and 24/7 proactive retainer monitoring.",
-    icon: Rocket,
-    deliverables: ["100% Client Code Ownership", "Lighthouse 95+ Audit Passed", "Ongoing SLA Retainers"],
+    title: "Support & Evolve",
+    duration: "Ongoing",
+    desc: "Monitoring, maintenance, performance reviews and continued development, so the software keeps pace with the business.",
+    icon: LifeBuoy,
+    deliverables: ["100% Client Code Ownership", "Monitoring & Maintenance", "Ongoing Improvements"],
   },
 ];
 
 export default function ProcessSection() {
   return (
     <section
-      id="process"
-      aria-label="Our Process"
+      id="approach"
+      aria-label="Our Approach"
       className="bg-[#F3F1EC] py-24 sm:py-32 relative overflow-hidden border-t border-[#E5E2DC]"
     >
       <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
@@ -50,16 +50,16 @@ export default function ProcessSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 sm:mb-20">
           <div className="inline-block px-3 py-1.5 rounded-[4px] bg-white border border-[#E5E2DC] text-[#161C2D] text-[11px] font-extrabold uppercase tracking-widest shadow-sm">
-            THE PROCESS
+            OUR APPROACH
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#161C2D]">
-            From concept to production in 4 simple steps.
+            A low-risk path from assessment to long-term support.
           </h2>
 
           <p className="text-base sm:text-lg text-[#535E73] leading-relaxed font-normal max-w-2xl mx-auto">
-            A transparent, sprint-based workflow designed to eliminate endless
-            agency meetings and get your product into users&apos; hands fast.
+            Every engagement starts with understanding what you already have,
+            then improves it in stages you can see, test and rely on.
           </p>
         </div>
 

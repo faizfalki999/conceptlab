@@ -1,86 +1,129 @@
 import {
+  RefreshCw,
+  Network,
+  Sparkles,
   Code2,
-  ShoppingCart,
-  Search,
-  MessageSquare,
-  AudioWaveform,
+  Boxes,
+  Database,
   ShieldCheck,
-  Rocket,
-  ShoppingBag,
-  Smartphone,
+  UserCog,
+  Compass,
   type LucideIcon,
 } from "lucide-react";
 
 export interface ServiceItem {
   id: string;
   slug: string;
+  /** Short name (hero orbit card, contact form) */
   name: string;
+  /** One-line summary (hero orbit card) */
   description: string;
+  /** Full title (services grid) */
+  title: string;
+  /** Longer description (services grid) */
+  detail: string;
+  tag: string;
   icon: LucideIcon;
 }
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: "full-stack-websites",
-    slug: "full-stack-websites",
-    name: "Full-stack Websites",
-    description: "Fast, SEO-ready sites built from scratch.",
+    id: "legacy-modernization",
+    slug: "legacy-modernization",
+    name: "Legacy Modernization",
+    description: "Move aging apps to modern .NET without starting over.",
+    title: "Legacy Software Modernization",
+    detail:
+      "Migrate VB6, WinForms, WebForms, Access and older .NET applications to modern .NET, step by step, while the business keeps running.",
+    tag: "Incremental • Low Risk",
+    icon: RefreshCw,
+  },
+  {
+    id: "api-integration",
+    slug: "api-integration",
+    name: "API & System Integration",
+    description: "Connect your ERP, CRM and in-house systems.",
+    title: "API & Enterprise Integration",
+    detail:
+      "Reliable APIs and integrations that connect ERP, CRM, accounting and in-house systems, so data moves automatically instead of being re-keyed.",
+    tag: "REST • Webhooks • Queues",
+    icon: Network,
+  },
+  {
+    id: "intelligent-automation",
+    slug: "intelligent-automation",
+    name: "AI & Automation",
+    description: "Automate processes and documents with AI.",
+    title: "AI & Intelligent Automation",
+    detail:
+      "Clearly scoped projects for document processing, workflow automation and AI assistants, built on top of the systems you already use.",
+    tag: "Scoped • Measurable",
+    icon: Sparkles,
+  },
+  {
+    id: "custom-development",
+    slug: "custom-development",
+    name: "Custom .NET Development",
+    description: "New business applications, built to last.",
+    title: "Custom .NET & Web Applications",
+    detail:
+      "Line-of-business applications, internal tools and APIs built with .NET, C# and modern front ends, designed to be maintained for years.",
+    tag: ".NET • C# • Azure",
     icon: Code2,
   },
   {
-    id: "ecommerce",
-    slug: "ecommerce",
-    name: "E-commerce",
-    description: "Online stores that turn visitors into buyers.",
-    icon: ShoppingCart,
+    id: "erp-solutions",
+    slug: "erp-solutions",
+    name: "ERP Solutions",
+    description: "Extend, customize and integrate your ERP.",
+    title: "ERP Solutions & Customization",
+    detail:
+      "Customizations, extensions, reporting and integrations that make your ERP fit the way your business actually works.",
+    tag: "Customize • Extend • Report",
+    icon: Boxes,
   },
   {
-    id: "seo-ai-visibility",
-    slug: "seo-ai-visibility",
-    name: "SEO + AI Visibility",
-    description: "Rank on Google and show up in ChatGPT and Gemini.",
-    icon: Search,
-  },
-  {
-    id: "ai-chatbots",
-    slug: "ai-chatbots",
-    name: "AI Chatbots",
-    description: "Assistants that answer customers 24/7.",
-    icon: MessageSquare,
-  },
-  {
-    id: "ai-voice-agents",
-    slug: "ai-voice-agents",
-    name: "AI Voice Agents",
-    description: "Call bots that answer and book for you.",
-    icon: AudioWaveform,
+    id: "sql-server-optimization",
+    slug: "sql-server-optimization",
+    name: "SQL Server Optimization",
+    description: "Faster queries and healthier databases.",
+    title: "SQL Server Optimization",
+    detail:
+      "Performance tuning, indexing, query rewrites and health reviews for SQL Server databases that have grown slow or fragile.",
+    tag: "Tuning • Health Checks",
+    icon: Database,
   },
   {
     id: "maintenance-support",
     slug: "maintenance-support",
     name: "Maintenance & Support",
-    description: "Updates, fixes and monitoring, handled.",
+    description: "Monitoring, fixes and ongoing development.",
+    title: "Application Maintenance & Support",
+    detail:
+      "Ongoing maintenance, monitoring, integration support, performance reviews and planned improvements on a predictable monthly basis.",
+    tag: "Monthly Retainer",
     icon: ShieldCheck,
   },
   {
-    id: "saas-mvp",
-    slug: "saas-mvp",
-    name: "SaaS MVP",
-    description: "Your product idea, launched fast.",
-    icon: Rocket,
+    id: "fractional-engineering",
+    slug: "fractional-engineering",
+    name: "Fractional Senior Engineering",
+    description: "Senior technical leadership, part-time.",
+    title: "Fractional Senior Engineering",
+    detail:
+      "Experienced senior engineering guidance for businesses that need technical leadership, but not a full-time senior hire.",
+    tag: "Part-Time • Senior",
+    icon: UserCog,
   },
   {
-    id: "shopify-themes-apps",
-    slug: "shopify-themes-apps",
-    name: "Shopify Themes & Apps",
-    description: "Custom themes and apps for your store.",
-    icon: ShoppingBag,
-  },
-  {
-    id: "mobile-apps",
-    slug: "mobile-apps",
-    name: "Mobile Apps",
-    description: "iOS and Android apps for your business.",
-    icon: Smartphone,
+    id: "technical-consulting",
+    slug: "technical-consulting",
+    name: "Technical Consulting",
+    description: "Architecture reviews and clear roadmaps.",
+    title: "Technical Consulting & Reviews",
+    detail:
+      "Architecture and code reviews, performance assessments and modernization roadmaps, so you can make technical decisions with confidence.",
+    tag: "Reviews • Roadmaps",
+    icon: Compass,
   },
 ];

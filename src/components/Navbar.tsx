@@ -7,10 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, ChevronRight } from "lucide-react";
 
 const NAV_LINKS = [
+  { name: "HOME", href: "#top" },
   { name: "SERVICES", href: "#services" },
-  { name: "PROCESS", href: "#process" },
-  { name: "WORK", href: "#work" },
-  { name: "FAQ", href: "#faq" },
+  { name: "MODERNIZATION", href: "#modernization" },
+  { name: "OUR APPROACH", href: "#approach" },
+  { name: "ABOUT", href: "#about" },
+  { name: "CONTACT", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -80,12 +82,12 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Links (shot_01 uppercase text style) */}
-            <div className="hidden lg:flex items-center gap-8 pl-3">
+            <div className="hidden lg:flex items-center gap-5 xl:gap-7 pl-1 xl:pl-3">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-[12px] font-bold tracking-[0.14em] text-[#161C2D] hover:text-[#0070F3] transition-colors duration-150 uppercase"
+                  className="text-[11px] xl:text-[12px] font-bold tracking-[0.12em] text-[#161C2D] hover:text-[#0070F3] transition-colors duration-150 uppercase whitespace-nowrap"
                 >
                   {link.name}
                 </a>
@@ -97,14 +99,14 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             {/* News Tag Pill (shot_01: NEWS ... >) */}
             <a
-              href="#services"
-              className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F0FE] text-[#161C2D] text-[11px] font-semibold tracking-wide hover:bg-[#D6E6FD] transition-colors"
+              href="#modernization"
+              className="group hidden 2xl:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F0FE] text-[#161C2D] text-[11px] font-semibold tracking-wide hover:bg-[#D6E6FD] transition-colors"
             >
               <span className="font-extrabold text-[#0070F3] uppercase text-[10px] tracking-wider">
-                NEWS
+                NEW
               </span>
               <span className="text-[#161C2D] font-medium text-[11px]">
-                CONCEPT LAB 2026
+                MODERNIZATION REVIEWS
               </span>
               <ChevronRight className="w-3.5 h-3.5 text-[#535E73] group-hover:translate-x-0.5 transition-transform" />
             </a>

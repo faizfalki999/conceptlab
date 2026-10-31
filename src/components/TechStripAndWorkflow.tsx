@@ -2,126 +2,116 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  Globe,
-  Bot,
-  PhoneCall,
-  Layers,
-  ShoppingBag,
-  Smartphone,
-  CheckCircle2,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
-// Tech stack logo strip (shot_02 reference)
+// Technology strip
 const TECH_LOGOS = [
-  { name: "Next.js", icon: "▲ Next.js" },
-  { name: "React", icon: "⚛ React" },
-  { name: "Shopify", icon: "🛍 Shopify" },
-  { name: "Node.js", icon: "⬢ Node.js" },
-  { name: "Python", icon: "🐍 Python" },
-  { name: "Flutter", icon: "📱 Flutter" },
-  { name: "OpenAI", icon: "✦ OpenAI" },
+  ".NET",
+  "C#",
+  "SQL Server",
+  "Azure",
+  "REST APIs",
+  "Python",
+  "React",
+  "OpenAI",
 ];
 
-// Workflow tabs (shot_02 interactive card)
+// Workflow tabs (interactive card)
 const TABS = [
   {
-    id: "web",
-    label: "WEB",
-    name: "Full-Stack Web Platform",
-    nodes: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Vercel", "Stripe"],
+    id: "modernize",
+    label: "MODERNIZE",
+    name: "Legacy Modernization",
+    nodes: ["VB6", "WinForms", "WebForms", "Access", ".NET 8", "ASP.NET Core"],
     metrics: [
-      { label: "Architecture", val: "Next.js 16 App Router" },
-      { label: "Performance", val: "Sub-2.0s LCP • 98+ Score" },
-      { label: "Deployment", val: "Vercel Edge Network" },
-      { label: "Ownership", val: "100% Client Code & Git" },
+      { label: "Approach", val: "Incremental, module by module" },
+      { label: "Risk", val: "Old and new run side by side" },
+      { label: "Business Rules", val: "Documented and preserved" },
+      { label: "Ownership", val: "100% client code & Git" },
     ],
   },
   {
-    id: "shopify",
-    label: "SHOPIFY",
-    name: "Custom Shopify & E-Com",
-    nodes: ["Liquid", "Storefront API", "Klaviyo", "Checkout Ext", "Hydrogen", "ERP"],
+    id: "integrate",
+    label: "INTEGRATE",
+    name: "Enterprise Integration",
+    nodes: ["ERP", "CRM", "Accounting", "REST", "Webhooks", "Queues"],
     metrics: [
-      { label: "Speed Index", val: "1.4s Fast Checkout" },
-      { label: "Conversion", val: "+34% Mobile Optimization" },
-      { label: "Apps & Theme", val: "Bespoke Theme & Custom Logic" },
-      { label: "Integrations", val: "Inventory & CRM Connected" },
+      { label: "Data Flow", val: "Automatic, no re-keying" },
+      { label: "Reliability", val: "Retries, logging & alerts" },
+      { label: "Interfaces", val: "Documented, versioned APIs" },
+      { label: "Visibility", val: "Every transfer traceable" },
     ],
   },
   {
-    id: "chatbot",
-    label: "AI CHATBOT",
-    name: "Autonomous AI Chatbot",
-    nodes: ["OpenAI", "LangChain", "Vector DB", "Zendesk", "Slack", "WhatsApp"],
+    id: "database",
+    label: "DATABASE",
+    name: "SQL Server Optimization",
+    nodes: ["Query Store", "Indexes", "T-SQL", "Reports", "Backups", "Monitoring"],
     metrics: [
-      { label: "Response Time", val: "< 500ms Real-Time Inference" },
-      { label: "Resolution", val: "82% Autonomous Inquiries Handled" },
-      { label: "Knowledge", val: "Custom RAG on Company Docs" },
-      { label: "Hand-off", val: "Zero-Latency Human Fallback" },
+      { label: "Focus", val: "Slowest queries fixed first" },
+      { label: "Method", val: "Profiling real workloads" },
+      { label: "Health", val: "Maintenance & backups reviewed" },
+      { label: "Hand-over", val: "Documented baseline & actions" },
     ],
   },
   {
-    id: "voice",
-    label: "VOICE AGENT",
-    name: "AI Call Bot & Voice Rep",
-    nodes: ["Twilio", "Deepgram", "Cartesia", "LiveKit", "CRM Sync", "Cal.com"],
+    id: "apps",
+    label: "CUSTOM APPS",
+    name: "Custom .NET Applications",
+    nodes: ["C#", "ASP.NET Core", "Blazor", "React", "Azure", "SQL Server"],
     metrics: [
-      { label: "Voice Latency", val: "Sub-400ms Turn-Taking" },
-      { label: "Uptime", val: "24/7 After-Hours Call Coverage" },
-      { label: "Call Actions", val: "Automatic Booking & CRM Qualification" },
-      { label: "Caller Quality", val: "Human-grade Conversational Flow" },
+      { label: "Built For", val: "Line-of-business workflows" },
+      { label: "Quality", val: "Tested & documented code" },
+      { label: "Hosting", val: "Azure or your own servers" },
+      { label: "Longevity", val: "Designed to be maintained" },
     ],
   },
   {
-    id: "saas",
-    label: "SAAS MVP",
-    name: "SaaS MVP Sprint",
-    nodes: ["PostgreSQL", "NextAuth", "Stripe Billing", "Cron Jobs", "Analytics", "API"],
+    id: "automation",
+    label: "AI AUTOMATION",
+    name: "Intelligent Automation",
+    nodes: ["Documents", "OpenAI", "Validation", "Workflows", "ERP", "Review"],
     metrics: [
-      { label: "Timeline", val: "3–4 Week Turnaround to Production" },
-      { label: "Foundations", val: "Multi-tenant, Auth, Billing Active" },
-      { label: "Scalability", val: "Ready for First 10,000 Users" },
-      { label: "Clean Code", val: "Fully Documented & Tested" },
+      { label: "Scope", val: "One process, piloted first" },
+      { label: "Control", val: "Validation & human review" },
+      { label: "Fit", val: "Built on existing systems" },
+      { label: "Outcome", val: "Measured before scaling" },
     ],
   },
   {
-    id: "mobile",
-    label: "MOBILE",
-    name: "iOS & Android Apps",
-    nodes: ["React Native", "Flutter", "Push Notifs", "Offline DB", "App Store", "Play Store"],
+    id: "support",
+    label: "SUPPORT",
+    name: "Maintenance & Support",
+    nodes: ["Monitoring", "Patching", "Fixes", "Reviews", "Backlog", "Releases"],
     metrics: [
-      { label: "Platforms", val: "Native iOS & Android Single Codebase" },
-      { label: "App Review", val: "100% Submission Guarantee" },
-      { label: "Sync Engine", val: "Real-Time Cloud Synchronization" },
-      { label: "UX Polish", val: "Smooth 60fps Micro-Interactions" },
+      { label: "Coverage", val: "Monitoring & incident response" },
+      { label: "Upkeep", val: "Security patches & updates" },
+      { label: "Improvement", val: "Planned monthly development" },
+      { label: "Billing", val: "Predictable monthly retainer" },
     ],
   },
 ];
 
 const WORKFLOW_STEPS = [
   {
-    title: "Connect & Architect",
-    desc: "We analyze your requirements, audit legacy systems, and specify the optimal architecture.",
+    title: "Assess & Map",
+    desc: "We review existing systems, code, data and integrations before recommending anything.",
   },
   {
-    title: "Rapid MVP Sprint",
-    desc: "High-velocity development in 2-week iterations with clean, maintainable TypeScript.",
+    title: "Stabilize",
+    desc: "Tests, monitoring and documentation around the critical paths, so change becomes safe.",
   },
   {
-    title: "AI & Automation Layer",
-    desc: "Direct integration of custom chatbots, voice dispatch bots, or AI search indexing.",
+    title: "Modernize Incrementally",
+    desc: "Rebuild and upgrade in small releases while the business keeps running.",
   },
   {
-    title: "Audit & Launch",
-    desc: "Rigorous performance, SEO, security, and accessibility QA before DNS deployment.",
+    title: "Integrate & Automate",
+    desc: "Connect systems through reliable APIs and add AI automation where it pays off.",
   },
   {
-    title: "Growth & Retainers",
-    desc: "Ongoing 24/7 uptime monitoring, security patches, and feature iteration sprints.",
+    title: "Support & Improve",
+    desc: "Ongoing maintenance, performance reviews and continued development.",
   },
 ];
 
@@ -131,8 +121,8 @@ export default function TechStripAndWorkflow() {
 
   return (
     <section
-      id="process"
-      aria-label="How Concept Lab Works"
+      id="how-we-work"
+      aria-label="How ConceptLab Works"
       className="bg-[#1E2745] text-white pt-16 sm:pt-20 pb-24 sm:pb-32 relative overflow-hidden"
     >
       {/* Subtle ambient lighting */}
@@ -150,10 +140,10 @@ export default function TechStripAndWorkflow() {
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 opacity-80 hover:opacity-100 transition-opacity">
             {TECH_LOGOS.map((tech) => (
               <div
-                key={tech.name}
+                key={tech}
                 className="flex items-center gap-2 text-sm sm:text-base font-semibold tracking-wider text-white/90 px-4 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08]"
               >
-                <span>{tech.icon}</span>
+                <span>{tech}</span>
               </div>
             ))}
           </div>
@@ -167,17 +157,17 @@ export default function TechStripAndWorkflow() {
           {/* LEFT: Tag, Heading, Subtext, Step Rows */}
           <div className="lg:col-span-6 space-y-8">
             <div className="inline-block px-3 py-1.5 rounded-[4px] bg-white/10 border border-white/10 text-white text-[11px] font-extrabold uppercase tracking-widest">
-              HOW IT WORKS
+              HOW WE WORK
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-white leading-[1.12] tracking-tight">
-              See how Concept Lab gets the job done.
+              Modern capabilities, without throwing away what works.
             </h2>
 
             <p className="text-base sm:text-lg text-[#A0ABBA] leading-relaxed max-w-lg font-normal">
-              We deploy dedicated engineering sprints across your business—from
-              custom web platforms and Shopify builds to autonomous AI voice and chat
-              bots, giving you speed, accuracy, and zero bloat.
+              We stabilize the systems you rely on, modernize them step by step,
+              connect them through reliable integrations and add automation where
+              it delivers real value.
             </p>
 
             {/* Vertical Step Rows with subtle hover arrows (shot_02 style) */}
@@ -252,7 +242,7 @@ export default function TechStripAndWorkflow() {
 
                 {/* Central glowing orb (shot_02 glowing dot) */}
                 <div className="absolute top-[68px] left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0070F3] to-[#FF8C66] shadow-[0_0_30px_rgba(0,112,243,0.8)] flex items-center justify-center animate-pulse">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0070F3] to-[#66A8FF] shadow-[0_0_30px_rgba(0,112,243,0.8)] flex items-center justify-center animate-pulse">
                     <Sparkles className="w-6 h-6 text-white" />
                   </div>
                 </div>

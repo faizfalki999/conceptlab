@@ -11,16 +11,17 @@ const STATS = [
 export default function Hero() {
   return (
     <section
-      aria-label="Concept Lab Hero"
+      id="top"
+      aria-label="ConceptLab Solutions Hero"
       className="relative overflow-hidden bg-[#F3F1EC] pt-4 sm:pt-6 pb-16 lg:pb-0 lg:h-[880px]"
     >
       {/* Visually hidden list of services for search engines and AI crawlers */}
       <div className="sr-only">
-        <h2>Concept Lab Specialized Services</h2>
+        <h2>ConceptLab Solutions Services</h2>
         <ul>
           {SERVICES.map((service) => (
             <li key={service.slug}>
-              <a href={`/services/${service.slug}`}>
+              <a href="#services">
                 {service.name}: {service.description}
               </a>
             </li>
@@ -73,23 +74,22 @@ export default function Hero() {
         </dl>
 
         <div className="max-w-xl">
-          {/* Tag (FROM IDEA TO LAUNCH) */}
+          {/* Tag */}
           <div className="inline-block px-3 py-1.5 rounded-[4px] bg-[#E6F0FE] text-[#0070F3] text-[11px] font-extrabold uppercase tracking-widest mb-6 sm:mb-8">
-            FROM IDEA TO LAUNCH
+            SOFTWARE ENGINEERING &amp; MODERNIZATION
           </div>
 
-          {/* Headline (Line 1 Bold, Line 2 Regular) */}
+          {/* Headline (tagline: two bold lines, one regular) */}
           <h1 className="text-[40px] sm:text-5xl lg:text-[50px] xl:text-[58px] leading-[1.06] tracking-tight text-[#161C2D]">
-            <span className="font-extrabold block">We build websites, apps.</span>
-            <span className="font-normal block mt-1.5">
-              Built to grow your business.
-            </span>
+            <span className="font-extrabold block">Build new.</span>
+            <span className="font-extrabold block">Modernize existing.</span>
+            <span className="font-normal block mt-1.5">Automate smarter.</span>
           </h1>
 
           {/* Short Subtext */}
           <p className="text-base sm:text-lg text-[#535E73] mt-6 sm:mt-7 max-w-md leading-relaxed">
-            High-performance websites, custom SaaS MVPs and AI agents
-            engineered to scale operations so your business grows.
+            We help businesses develop software, modernize legacy applications,
+            integrate enterprise systems and introduce intelligent automation.
           </p>
 
           {/* CTA Button */}

@@ -1,84 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Globe,
-  ShoppingCart,
-  Search,
-  Bot,
-  PhoneCall,
-  ShieldCheck,
-  Layers,
-  ShoppingBag,
-  Smartphone,
-  ArrowUpRight,
-} from "lucide-react";
-
-const SERVICES = [
-  {
-    id: "full-stack-web",
-    title: "Full-Stack Website Development",
-    desc: "Bespoke, blazing-fast web applications built with Next.js, TypeScript, and modern headless architectures.",
-    tag: "Next.js 16 • Edge Deployed",
-    icon: Globe,
-  },
-  {
-    id: "ecommerce-development",
-    title: "E-Commerce Website Development",
-    desc: "High-converting online stores optimized for lightning-speed checkout, frictionless UX, and scalable payment processing.",
-    tag: "High Conversion • Stripe",
-    icon: ShoppingCart,
-  },
-  {
-    id: "ai-visibility-seo",
-    title: "SEO & AI Visibility Optimization",
-    desc: "Rank on Google and get cited as the primary source in ChatGPT, Gemini, Perplexity, and Google AI Overviews.",
-    tag: "LLMs & Google AI Overviews",
-    icon: Search,
-  },
-  {
-    id: "ai-chatbot-development",
-    title: "AI Chatbot Development",
-    desc: "Autonomous, context-aware conversational bots trained on your business data to handle customer inquiries 24/7.",
-    tag: "Trained on Private Data",
-    icon: Bot,
-  },
-  {
-    id: "ai-voice-agents",
-    title: "AI Call Bots & Voice Agents",
-    desc: "Human-grade voice agents for inbound dispatch, lead qualification, and automatic calendar scheduling.",
-    tag: "Sub-400ms Turn-Taking",
-    icon: PhoneCall,
-  },
-  {
-    id: "maintenance-retainers",
-    title: "Maintenance & Support Retainers",
-    desc: "Proactive uptime monitoring, security patches, performance tuning, and priority engineering iterations.",
-    tag: "24/7 Continuous Monitoring",
-    icon: ShieldCheck,
-  },
-  {
-    id: "saas-mvp-development",
-    title: "SaaS MVP Development",
-    desc: "From concept to production software in 2–4 weeks with user authentication, database architecture, and billing.",
-    tag: "Production Ready in 3 Weeks",
-    icon: Layers,
-  },
-  {
-    id: "custom-shopify",
-    title: "Custom Shopify Themes & Apps",
-    desc: "Tailored Shopify Liquid themes and custom private apps engineered for brands that have outgrown templates.",
-    tag: "Bespoke Theme & API",
-    icon: ShoppingBag,
-  },
-  {
-    id: "mobile-apps",
-    title: "Cross-Platform Mobile Apps",
-    desc: "Native-feel iOS and Android mobile applications built for fluid 60fps performance and offline-first capabilities.",
-    tag: "iOS & Android Single Stack",
-    icon: Smartphone,
-  },
-];
+import { ArrowUpRight } from "lucide-react";
+import { SERVICES } from "@/data/services";
 
 export default function ServicesGrid() {
   return (
@@ -96,12 +20,12 @@ export default function ServicesGrid() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#161C2D]">
-            Everything your business needs online.
+            Engineering for the systems your business runs on.
           </h2>
 
           <p className="text-base sm:text-lg text-[#535E73] leading-relaxed font-normal max-w-2xl mx-auto">
-            From ground-up web platforms to autonomous voice bots, we engineer
-            high-performance digital software designed to scale your operations.
+            We modernize the software you depend on, build what is missing,
+            connect it all together and automate the work in between.
           </p>
         </div>
 
@@ -134,7 +58,7 @@ export default function ServicesGrid() {
 
                   {/* Description (2 clean lines) */}
                   <p className="text-sm text-[#535E73] mt-3 leading-relaxed">
-                    {service.desc}
+                    {service.detail}
                   </p>
                 </div>
 

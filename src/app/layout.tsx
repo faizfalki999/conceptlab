@@ -21,38 +21,41 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://conceptlab.solutions"),
   title: {
-    default: "Concept Lab | Digital Products, Web Development & AI Solutions",
-    template: "%s | Concept Lab",
+    default:
+      "ConceptLab Solutions | Custom Software Development & Legacy Modernization",
+    template: "%s | ConceptLab Solutions",
   },
   description:
-    "Concept Lab builds high-performance websites, web apps, AI chatbots, voice agents, and custom e-commerce solutions that scale businesses.",
+    "Custom .NET development, legacy software modernization, API integration, ERP solutions, and SQL Server optimization by ConceptLab Solutions.",
   keywords: [
-    "web development",
-    "digital agency",
-    "AI chatbots",
-    "AI voice agents",
-    "Next.js agency",
-    "SaaS MVP development",
-    "AI visibility SEO",
-    "e-commerce development",
-    "custom Shopify themes",
+    "legacy software modernization",
+    "custom .NET development",
+    "API integration",
+    "enterprise integration",
+    "ERP solutions",
+    "SQL Server optimization",
+    "intelligent automation",
+    "AI automation",
+    "fractional senior engineer",
   ],
-  authors: [{ name: "Concept Lab" }],
-  creator: "Concept Lab",
+  authors: [{ name: "ConceptLab Solutions" }],
+  creator: "ConceptLab Solutions",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://conceptlab.solutions",
-    title: "Concept Lab | Digital Products, Web Development & AI Solutions",
+    title:
+      "ConceptLab Solutions | Custom Software Development & Legacy Modernization",
     description:
-      "We build websites, apps and AI that grow your business. High-performance digital products engineered for modern founders and SMBs.",
-    siteName: "Concept Lab",
+      "Build New. Modernize Existing. Automate Smarter. Software engineering, legacy modernization, enterprise integration and intelligent automation.",
+    siteName: "ConceptLab Solutions",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Concept Lab | Digital Products, Web Development & AI Solutions",
+    title:
+      "ConceptLab Solutions | Custom Software Development & Legacy Modernization",
     description:
-      "We build websites, apps and AI that grow your business. High-performance digital products engineered for modern founders and SMBs.",
+      "Build New. Modernize Existing. Automate Smarter. Software engineering, legacy modernization, enterprise integration and intelligent automation.",
   },
   robots: {
     index: true,

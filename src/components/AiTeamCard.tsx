@@ -5,19 +5,19 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const AGENTS = [
   {
-    name: "AI Voice Agent",
-    description: "Assists client teams with 24/7 intelligent voice and web qualification.",
-    tags: ["Leads", "CRM", "Qualify"],
+    name: "Document Processing",
+    description: "Reads invoices, orders and forms, then posts validated data into your ERP.",
+    tags: ["Invoices", "Extraction", "ERP"],
   },
   {
-    name: "AI Chatbot",
-    description: "Answers customer questions instantly across your site and socials.",
-    tags: ["Support", "FAQ", "24/7"],
+    name: "Workflow Automation",
+    description: "Routes approvals, syncs systems and flags exceptions without manual re-keying.",
+    tags: ["Approvals", "Sync", "Alerts"],
   },
   {
-    name: "AI Booking Agent",
-    description: "Books calls and appointments straight into your calendar.",
-    tags: ["Calendar", "Sales", "Follow-up"],
+    name: "AI Support Assistant",
+    description: "Answers staff and customer questions from your own documents and data.",
+    tags: ["Knowledge", "Tickets", "Hand-off"],
   },
 ];
 
@@ -37,7 +37,7 @@ export default function AiTeamCard() {
   return (
     <div>
       <div className="text-[11px] font-bold tracking-[0.16em] text-[#8490A5] uppercase mb-4">
-        Your AI team
+        Intelligent automation
       </div>
 
       <div className="relative w-full max-w-[280px]">

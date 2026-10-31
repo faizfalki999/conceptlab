@@ -2,50 +2,60 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, ArrowUpRight, HelpCircle } from "lucide-react";
+import { Plus, Minus, ArrowUpRight } from "lucide-react";
 
 const FAQ_CATEGORIES = [
   "General",
-  "Technical",
-  "AI Capabilities",
-  "Pricing & Retainers",
+  "Modernization",
+  "Integration & AI",
+  "Engagement & Support",
 ];
 
 const FAQS = [
   {
     category: "General",
-    q: "What is Concept Lab, and how do you differ from traditional agencies?",
-    a: "Concept Lab is an agile engineering and AI studio for founders and SMBs. Unlike bloated agencies that hand off work to junior freelancers and drown projects in account management fees, we work in fast 2–4 week production sprints with senior engineers, providing clean code, direct Slack communication, and guaranteed turnaround times.",
+    q: "What does ConceptLab Solutions do?",
+    a: "ConceptLab is a software engineering and modernization studio. We build custom software, modernize legacy applications, integrate enterprise systems such as ERP and CRM platforms, optimize SQL Server databases and introduce focused AI automation, with ongoing support afterwards.",
   },
   {
     category: "General",
-    q: "Do I own 100% of the code and intellectual property?",
-    a: "Yes, completely. All source code, Figma design files, database configurations, and deployment setups belong entirely to you from day one. We hand over the private Git repository with full documentation and zero vendor lock-in.",
+    q: "Do we own the code and intellectual property?",
+    a: "Yes, completely. All source code, database scripts, documentation and deployment configuration belong to you. You get full access to the repository and no vendor lock-in.",
   },
   {
-    category: "Technical",
-    q: "How fast can you build and launch a custom website or SaaS MVP?",
-    a: "Standard landing pages and brand websites launch in 1 to 2 weeks. Custom SaaS MVPs, bespoke Shopify themes, or specialized AI platforms typically launch in 3 to 4 weeks. Every project is broken into clear milestones with staging previews updated continuously.",
+    category: "Modernization",
+    q: "Do we have to rewrite our legacy application from scratch?",
+    a: "Usually not. Big-bang rewrites are expensive and risky. We prefer to modernize incrementally: stabilizing the existing system, then replacing or upgrading it module by module while old and new run side by side, so the business never has to stop.",
   },
   {
-    category: "AI Capabilities",
-    q: "How do your AI voice agents and chatbots connect to our existing tools?",
-    a: "We integrate directly with your stack via REST APIs and Webhooks. Voice bots connect to Twilio, LiveKit, and your existing telephony, while chatbots sync with your CRM (HubSpot, Salesforce), support desks (Zendesk, Intercom), and private databases via secure retrieval-augmented generation (RAG).",
+    category: "Modernization",
+    q: "Which legacy technologies can you work with?",
+    a: "We regularly work with VB6, WinForms, ASP.NET WebForms, older .NET Framework applications, Microsoft Access front ends and long-running SQL Server databases, and move them onto modern, supported .NET.",
   },
   {
-    category: "AI Capabilities",
-    q: "What is AI Visibility SEO, and how does it help my business?",
-    a: "Traditional SEO focuses only on Google blue links. AI Visibility SEO structures your site’s schema, entities, and citations so large language models—including ChatGPT Search, Perplexity, Gemini, and Google AI Overviews—actively reference and recommend your business when prospective clients ask questions.",
+    category: "Integration & AI",
+    q: "Can you connect our ERP, CRM and other systems?",
+    a: "Yes. We design and build APIs and background integrations between ERP, CRM, accounting, e-commerce and in-house systems, with logging, retries and alerts so data moves reliably and problems are visible.",
   },
   {
-    category: "Pricing & Retainers",
-    q: "What happens after launch? Do you provide ongoing maintenance?",
-    a: "Yes. We offer monthly maintenance retainers covering 24/7 uptime monitoring, security patches, performance audits, and dedicated monthly development hours for continuous feature additions and optimizations.",
+    category: "Integration & AI",
+    q: "How do you approach AI projects?",
+    a: "We start small and practical: one clearly scoped process, such as document processing or a workflow approval, built on top of your existing systems with validation and human review. Once it delivers measurable value, it can be extended.",
   },
   {
-    category: "Pricing & Retainers",
-    q: "How does your pricing work?",
-    a: "We offer transparent, fixed-scope sprint pricing for new builds so there are never surprise hourly invoices. After an initial discovery call, we provide a fixed quote with clear milestones and deliverables.",
+    category: "Engagement & Support",
+    q: "What happens after a project is delivered?",
+    a: "We offer monthly maintenance and support covering monitoring, security updates, integration support, performance reviews and planned development time, so your software keeps pace with the business.",
+  },
+  {
+    category: "Engagement & Support",
+    q: "Can you provide senior technical guidance without a full project?",
+    a: "Yes. Our fractional senior engineering service gives smaller businesses experienced technical leadership, such as architecture decisions, code reviews and vendor oversight, without hiring a full-time senior developer.",
+  },
+  {
+    category: "Engagement & Support",
+    q: "How does pricing work?",
+    a: "Most engagements start with an assessment, followed by a quote with clear milestones. Ongoing support and fractional engineering are billed as predictable monthly retainers.",
   },
 ];
 
@@ -92,12 +102,12 @@ export default function FAQSection() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#161C2D]">
-            All About Concept Lab, Explained
+            Questions, answered.
           </h2>
 
           <p className="text-base sm:text-lg text-[#535E73] leading-relaxed font-normal max-w-2xl mx-auto">
-            Everything you need to know about how Concept Lab fits into your
-            workflow, from setup and code ownership to AI capabilities and retainers.
+            What to expect when you work with ConceptLab, from modernizing
+            legacy systems and integrations to AI projects and ongoing support.
           </p>
         </div>
 
