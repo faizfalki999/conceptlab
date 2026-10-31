@@ -57,25 +57,23 @@ export default function Navbar() {
             {/* Logo with official CL icon and typography */}
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0070F3] rounded-lg group"
-              aria-label="Concept Lab Solutions Home"
+              className="inline-flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0070F3] rounded-lg group"
+              aria-label="ConceptLab Solutions Home"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black overflow-hidden flex items-center justify-center shadow-sm shrink-0 border border-white/20 group-hover:scale-105 transition-transform">
-                <Image
-                  src="/brand/cl-icon.jpg"
-                  alt="Concept Lab"
-                  width={36}
-                  height={36}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
+              <Image
+                src="/brand/cl-mark.png"
+                alt=""
+                width={44}
+                height={44}
+                className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 group-hover:scale-105 transition-transform"
+                priority
+              />
 
               <div className="flex flex-col">
-                <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#161C2D] leading-none">
+                <span className="font-extrabold text-lg sm:text-[22px] tracking-tight text-[#0F1A3A] leading-none">
                   Concept<span className="text-[#0070F3]">Lab</span>
                 </span>
-                <span className="text-[9px] font-bold tracking-[0.22em] text-[#58627A] uppercase mt-0.5">
+                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.42em] text-[#3A4560] uppercase mt-1">
                   SOLUTIONS
                 </span>
               </div>
