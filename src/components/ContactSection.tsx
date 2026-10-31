@@ -5,14 +5,18 @@ import Image from "next/image";
 import { CheckCircle2, Clock, Sparkles, Send } from "lucide-react";
 import { SERVICES } from "@/data/services";
 
-const SERVICES_OPTIONS = [...SERVICES.map((s) => s.name), "Not sure yet"];
+// Everyday wording for visitors; the submitted value keeps the service name for our team
+const SERVICES_OPTIONS = [
+  ...SERVICES.map((s) => ({ label: s.plainName, value: `${s.plainName} (${s.name})` })),
+  { label: "I'm not sure yet, help me decide", value: "Not sure yet" },
+];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
-    service: SERVICES_OPTIONS[0],
+    service: "",
     message: "",
   });
 
@@ -41,7 +45,7 @@ export default function ContactSection() {
         name: "",
         email: "",
         company: "",
-        service: SERVICES_OPTIONS[0],
+        service: "",
         message: "",
       });
     } catch (err: unknown) {
@@ -219,16 +223,21 @@ export default function ContactSection() {
                     {/* Service Selection Dropdown */}
                     <div>
                       <label className="block text-[11px] font-bold text-white/90 uppercase tracking-wider mb-1.5">
-                        Service of Interest
+                        What do you need help with?
                       </label>
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#0070F3] transition-colors"
+                        className={`w-full px-4 py-3 rounded-lg bg-[#253157]/50 border border-white/10 text-sm focus:outline-none focus:border-[#0070F3] transition-colors ${
+                          formData.service ? "text-white" : "text-white/40"
+                        }`}
                       >
-                        {SERVICES_OPTIONS.map((srv) => (
-                          <option key={srv} value={srv} className="bg-[#141B30] text-white">
-                            {srv}
+                        <option value="" disabled className="bg-[#141B30] text-white/50">
+                          Choose the closest match
+                        </option>
+                        {SERVICES_OPTIONS.map((opt) => (
+                          <option key={opt.value} value={opt.value} className="bg-[#141B30] text-white">
+                            {opt.label}
                           </option>
                         ))}
                       </select>

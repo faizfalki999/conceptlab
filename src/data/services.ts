@@ -16,6 +16,8 @@ export interface ServiceItem {
   slug: string;
   /** Short name (hero orbit card, contact form) */
   name: string;
+  /** Everyday wording for non-technical visitors (contact form) */
+  plainName: string;
   /** One-line summary (hero orbit card) */
   description: string;
   /** Full title (services grid) */
@@ -31,6 +33,7 @@ export const SERVICES: ServiceItem[] = [
     id: "legacy-modernization",
     slug: "legacy-modernization",
     name: "Legacy Modernization",
+    plainName: "Update or replace an old system",
     description: "Move aging apps to modern .NET without starting over.",
     title: "Legacy Software Modernization",
     detail:
@@ -42,6 +45,7 @@ export const SERVICES: ServiceItem[] = [
     id: "api-integration",
     slug: "api-integration",
     name: "API & System Integration",
+    plainName: "Connect my software systems together",
     description: "Connect your ERP, CRM and in-house systems.",
     title: "API & Enterprise Integration",
     detail:
@@ -53,6 +57,7 @@ export const SERVICES: ServiceItem[] = [
     id: "intelligent-automation",
     slug: "intelligent-automation",
     name: "AI & Automation",
+    plainName: "Automate repetitive work with AI",
     description: "Automate processes and documents with AI.",
     title: "AI & Intelligent Automation",
     detail:
@@ -64,6 +69,7 @@ export const SERVICES: ServiceItem[] = [
     id: "custom-development",
     slug: "custom-development",
     name: "Custom .NET Development",
+    plainName: "Build new custom software",
     description: "New business applications, built to last.",
     title: "Custom .NET & Web Applications",
     detail:
@@ -75,6 +81,7 @@ export const SERVICES: ServiceItem[] = [
     id: "erp-solutions",
     slug: "erp-solutions",
     name: "ERP Solutions",
+    plainName: "Improve or customize our ERP",
     description: "Extend, customize and integrate your ERP.",
     title: "ERP Solutions & Customization",
     detail:
@@ -86,6 +93,7 @@ export const SERVICES: ServiceItem[] = [
     id: "sql-server-optimization",
     slug: "sql-server-optimization",
     name: "SQL Server Optimization",
+    plainName: "Speed up a slow database",
     description: "Faster queries and healthier databases.",
     title: "SQL Server Optimization",
     detail:
@@ -97,6 +105,7 @@ export const SERVICES: ServiceItem[] = [
     id: "maintenance-support",
     slug: "maintenance-support",
     name: "Maintenance & Support",
+    plainName: "Ongoing maintenance and support",
     description: "Monitoring, fixes and ongoing development.",
     title: "Application Maintenance & Support",
     detail:
@@ -108,6 +117,7 @@ export const SERVICES: ServiceItem[] = [
     id: "fractional-engineering",
     slug: "fractional-engineering",
     name: "Fractional Senior Engineering",
+    plainName: "Part-time senior tech expert",
     description: "Senior technical leadership, part-time.",
     title: "Fractional Senior Engineering",
     detail:
@@ -119,6 +129,7 @@ export const SERVICES: ServiceItem[] = [
     id: "technical-consulting",
     slug: "technical-consulting",
     name: "Technical Consulting",
+    plainName: "Expert advice or a technical review",
     description: "Architecture reviews and clear roadmaps.",
     title: "Technical Consulting & Reviews",
     detail:
