@@ -7,6 +7,10 @@ import { SERVICES } from "@/data/services";
 
 // Everyday wording for visitors; the submitted value keeps the service name for our team
 const SERVICES_OPTIONS = [
+  // Common everyday requests, listed first
+  { label: "Build a website", value: "Build a website" },
+  { label: "Build a mobile or web app", value: "Build a mobile or web app" },
+  { label: "Add an AI chatbot to my website", value: "Add an AI chatbot" },
   ...SERVICES.map((s) => ({ label: s.plainName, value: `${s.plainName} (${s.name})` })),
   { label: "I'm not sure yet, help me decide", value: "Not sure yet" },
 ];
